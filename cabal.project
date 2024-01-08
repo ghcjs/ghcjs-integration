@@ -1,0 +1,12 @@
+packages:
+ jsaddle/jsaddle/
+ jsaddle/jsaddle-warp/
+ jsaddle/jsaddle-wkwebview/
+ jsaddle/jsaddle-webkit2gtk/
+ jsaddle/jsaddle-clib/
+ ghcjs-dom/ghcjs-dom/
+ ghcjs-base/
+
+constraints: haskell-gi-overloading == 0.0
+
+allow-newer: websockets:random, splitmix:time, *:time, *:unix, *:process, stm:base

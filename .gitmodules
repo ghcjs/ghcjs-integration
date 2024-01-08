@@ -1,0 +1,9 @@
+[submodule "jsaddle"]
+	path = jsaddle
+	url = ./jsaddle
+[submodule "ghcjs-dom"]
+	path = ghcjs-dom
+	url = ./ghcjs-dom
+[submodule "ghcjs-base"]
+	path = ghcjs-base
+	url = ./ghcjs-base
