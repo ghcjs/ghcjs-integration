@@ -7,3 +7,6 @@
 [submodule "ghcjs-base"]
 	path = ghcjs-base
 	url = ./ghcjs-base
+[submodule "jsaddle-dom"]
+	path = jsaddle-dom
+	url = ./jsaddle-dom

@@ -18,7 +18,7 @@
           (final: _prev: {
             hixProject =
               final.haskell-nix.hix.project {
-                src = ./.;
+                src = __trace ./. ./.;
                 # uncomment with your current system for `nix flake show` to work:
                 #evalSystem = "x86_64-linux";
               };

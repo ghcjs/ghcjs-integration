@@ -2,11 +2,25 @@ packages:
  jsaddle/jsaddle/
  jsaddle/jsaddle-warp/
  jsaddle/jsaddle-wkwebview/
- jsaddle/jsaddle-webkit2gtk/
+-- jsaddle/jsaddle-webkit2gtk/
  jsaddle/jsaddle-clib/
+ jsaddle-dom/
  ghcjs-dom/ghcjs-dom/
- ghcjs-base/
+ ghcjs-dom/ghcjs-dom-jsaddle/
+
+if os(ghcjs)
+  packages:
+    ghcjs-base/
+
+if impl(ghcjs)
+  packages:
+    ghcjs-dom/ghcjs-dom-jsffi/
+
+source-repository-package
+  type: git
+  location: https://github.com/JoshMeredith/splitmix.git
+  tag: 7ffb3158f577c48ab5de774abea47767921ef3e9
 
 constraints: haskell-gi-overloading == 0.0
 
-allow-newer: websockets:random, splitmix:time, *:time, *:unix, *:process, stm:base
+allow-newer: websockets:random, splitmix:*, *:time, *:unix, *:process, stm:base
