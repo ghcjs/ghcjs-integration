@@ -1,26 +1,30 @@
 packages:
- jsaddle/jsaddle/
- jsaddle/jsaddle-warp/
- jsaddle/jsaddle-wkwebview/
--- jsaddle/jsaddle-webkit2gtk/
- jsaddle/jsaddle-clib/
- jsaddle-dom/
- ghcjs-dom/ghcjs-dom/
- ghcjs-dom/ghcjs-dom-jsaddle/
+  jsaddle/jsaddle/
+  jsaddle/jsaddle-warp/
+  jsaddle/jsaddle-clib/
+  jsaddle-hello/
+  jsaddle-dom/
+  ghcjs-dom/ghcjs-dom/
+  ghcjs-dom/ghcjs-dom-jsaddle/
+  ghcjs-dom-hello/
 
-if os(ghcjs)
+if os(osx)
+  packages:
+    jsaddle/jsaddle-wkwebview/
+else
+  packages:
+    jsaddle/jsaddle-webkit2gtk/
+
+-- ghcjs 8.10 can use `ghcjs-base` from hackage
+if arch(javascript)
   packages:
     ghcjs-base/
 
-if impl(ghcjs)
+if impl(ghcjs) -- TODO add || arch(javascript)
   packages:
     ghcjs-dom/ghcjs-dom-jsffi/
-
-source-repository-package
-  type: git
-  location: https://github.com/JoshMeredith/splitmix.git
-  tag: 7ffb3158f577c48ab5de774abea47767921ef3e9
+else
+  package ghcjs-dom
+    flags: -jsffi
 
 constraints: haskell-gi-overloading == 0.0
-
-allow-newer: websockets:random, splitmix:*, *:time, *:unix, *:process, stm:base

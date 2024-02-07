@@ -1,12 +1,18 @@
 [submodule "jsaddle"]
 	path = jsaddle
-	url = ./jsaddle
+	url = https://github.com/ghcjs/jsaddle.git
 [submodule "ghcjs-dom"]
 	path = ghcjs-dom
-	url = ./ghcjs-dom
+	url = https://github.com/ghcjs/ghcjs-dom.git
 [submodule "ghcjs-base"]
 	path = ghcjs-base
-	url = ./ghcjs-base
+	url = https://github.com/ghcjs/ghcjs-base.git
 [submodule "jsaddle-dom"]
 	path = jsaddle-dom
-	url = ./jsaddle-dom
+	url = https://github.com/ghcjs/jsaddle-dom.git
+[submodule "jsaddle-hello"]
+	path = jsaddle-hello
+	url = https://github.com/ghcjs/jsaddle-hello.git
+[submodule "ghcjs-dom-hello"]
+	path = ghcjs-dom-hello
+	url = https://github.com/ghcjs/ghcjs-dom-hello.git
