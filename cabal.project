@@ -20,12 +20,16 @@ if arch(javascript)
   packages:
     ghcjs-base/
 
-if impl(ghcjs) -- TODO add || arch(javascript)
+if impl(ghcjs)
   packages:
     ghcjs-dom/ghcjs-dom-jsffi/
 else
-  package ghcjs-dom
-    flags: -jsffi
+  if arch(javascript)
+    packages:
+      ghcjs-dom/ghcjs-dom-javascript/
+  else
+    package ghcjs-dom
+      flags: -jsffi
 
 constraints: haskell-gi-overloading == 0.0
 
