@@ -11,25 +11,22 @@ packages:
 if os(osx)
   packages:
     jsaddle/jsaddle-wkwebview/
-else
+
+if os(linux)
   packages:
     jsaddle/jsaddle-webkit2gtk/
 
--- ghcjs 8.10 can use `ghcjs-base` from hackage
-if arch(javascript)
-  packages:
-    ghcjs-base/
-
-if impl(ghcjs)
-  packages:
-    ghcjs-dom/ghcjs-dom-jsffi/
-else
-  if arch(javascript)
+if impl(ghcjs) || arch(javascript)
+  if impl(ghc<9)
+    packages:
+      ghcjs-dom/ghcjs-dom-jsffi/
+  else
     packages:
       ghcjs-dom/ghcjs-dom-javascript/
-  else
-    package ghcjs-dom
-      flags: -jsffi
+      ghcjs-base/
+else
+  package ghcjs-dom
+    flags: -jsffi
 
 constraints: haskell-gi-overloading == 0.0
 
