@@ -3,6 +3,7 @@
   modules = [({pkgs, ...}: {
     package-keys = ["webkit2gtk3-javascriptcore"];
     packages.webkit2gtk3-javascriptcore.components.library.doHaddock = false;
+    enableStatic = !pkgs.stdenv.hostPlatform.isGhcjs;
   })];
   flake.variants.ghc967.compiler-nix-name = pkgs.lib.mkForce "ghc967";
   shell.buildInputs = [ pkgs.pkgsBuildBuild.nodejs ];
