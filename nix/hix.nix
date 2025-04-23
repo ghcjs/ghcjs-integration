@@ -5,7 +5,7 @@
     packages.webkit2gtk3-javascriptcore.components.library.doHaddock = false;
   })];
   flake.variants.ghc967.compiler-nix-name = pkgs.lib.mkForce "ghc967";
-  shell.buildInputs = [ pkgs.nodejs ];
+  shell.buildInputs = [ pkgs.pkgsBuildBuild.nodejs ];
   shell.tools.cabal = {};
   crossPlatforms = p: [ p.ghcjs ];
 
