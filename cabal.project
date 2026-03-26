@@ -28,9 +28,35 @@ else
   package ghcjs-dom
     flags: -jsffi
 
-constraints: haskell-gi-overloading == 0.0
+constraints: haskell-gi-overloading == 0.0,
+             exceptions source,
+             filepath source,
+             os-string source,
+             file-io source,
+             time source,
+             hashable source,
+             unordered-containers source,
+             directory source
 
 -- For testing with containers 0.7
 -- if arch(javascript)
 --   constraints: containers >= 0.7
 -- allow-newer: scientific:containers, hashable:containers, aeson:containers, witherable:containers, semialign:containers, indexed-traversable:containers, test-framework:containers
+
+-- GHC 9.14 ships base 4.22, containers 0.8, and template-haskell 2.24
+allow-newer:
+  these:base,
+  indexed-traversable-instances:base,
+  indexed-traversable:base,
+  indexed-traversable:containers,
+  semialign:base,
+  semialign:containers,
+  aeson:template-haskell,
+  aeson:containers,
+  *:time,
+  uuid-types:template-haskell,
+  websockets:containers,
+  scientific:containers,
+  hashable:containers,
+  witherable:containers,
+  test-framework:containers
