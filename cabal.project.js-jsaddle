@@ -1,0 +1,6 @@
+-- The JavaScript backend with ghcjs-dom's jsaddle flavour (jsaddle-dom on
+-- JS, as leksah builds it): ghcjs-dom -jsffi, reflex-dom-core -jsffi.
+--   nix develop '.?submodules=1#javascript-unknown-ghcjs' -c \
+--     cabal build --project-file=cabal.project.js-jsaddle --builddir=dist-newstyle/js-jsaddle ghcjs-dom-tests
+import: cabal.project
+constraints: ghcjs-dom -jsffi

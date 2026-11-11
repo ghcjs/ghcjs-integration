@@ -1,0 +1,29 @@
+cabal-version: 3.0
+name: ghcjs-dom-tests
+version: 0.1.0.0
+synopsis: Browser smoke tests for the generated ghcjs-dom bindings
+description:
+  Runs checks against the DOM through ghcjs-dom and writes PASS/FAIL lines
+  into the page (\<pre id="results"\>, ending with a DONE line).  Built with
+  the GHC JavaScript backend it runs in the page itself; with native GHC it
+  serves the same checks through jsaddle-warp (port 3709).
+license: MIT
+author: Hamish Mackenzie
+maintainer: Hamish Mackenzie <Hamish.K.Mackenzie@googlemail.com>
+build-type: Simple
+
+executable ghcjs-dom-tests
+  main-is: Main.hs
+  other-modules: Existence, Existence.Spec
+  hs-source-dirs: src
+  default-language: GHC2021
+  ghc-options: -Wall -threaded
+  build-depends:
+      base <5
+    , exceptions
+    , text
+    , ghcjs-dom >=0.10 && <0.11
+  if arch(javascript)
+    build-depends: ghcjs-base
+  else
+    build-depends: jsaddle, jsaddle-warp

@@ -1,0 +1,52 @@
+cabal-version:      3.0
+name:               dom-gen
+version:            0.1.0.0
+synopsis:           Generate jsaddle-dom and ghcjs-dom bindings from webref Web IDL
+description:
+  Reads the curated Web IDL that w3c/webref publishes already parsed to JSON,
+  together with webref's event/element data and MDN browser-compat-data
+  (all pinned by @inputs.nix@), and writes the Haskell modules of
+  jsaddle-dom and ghcjs-dom-javascript.  Replaces domconv-webkit.
+license:            MIT
+author:             Hamish Mackenzie
+maintainer:         Hamish Mackenzie <Hamish.K.Mackenzie@googlemail.com>
+build-type:         Simple
+
+common warnings
+  ghc-options: -Wall -Wno-name-shadowing -Wno-unused-do-bind -rtsopts
+
+executable dom-gen
+  import:           warnings
+  main-is:          Main.hs
+  hs-source-dirs:   src
+  other-modules:
+    DomGen.Model
+    DomGen.Load
+    DomGen.ApiDiff
+    DomGen.Baseline
+    DomGen.Names
+    DomGen.Env
+    DomGen.Emit.Cabal
+    DomGen.Emit.Common
+    DomGen.Emit.Enums
+    DomGen.Emit.Existence
+    DomGen.Emit.JSaddle
+    DomGen.Emit.JavaScript
+    DomGen.Emit.Types
+  build-depends:
+      base >=4.18 && <5
+    , aeson >=2.1 && <2.3
+    , aeson-pretty >=0.8
+    , bytestring
+    , containers >=0.6
+    , directory
+    , filepath
+    , text >=2.0
+    , vector
+  default-language: GHC2021
+  default-extensions:
+    OverloadedStrings
+    LambdaCase
+    MultiWayIf
+    RecordWildCards
+    StrictData

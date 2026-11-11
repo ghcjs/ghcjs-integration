@@ -7,7 +7,8 @@
     let
       supportedSystems = [
         "x86_64-linux"
-        "x86_64-darwin"
+        # Nixpkgs 26.11 has dropped x86_64-darwin (as in leksah's flake)
+        # "x86_64-darwin"
         "aarch64-linux"
         "aarch64-darwin"
       ];
@@ -27,7 +28,13 @@
         pkgs = import nixpkgs { inherit system overlays; inherit (haskellNix) config; };
         flake = pkgs.hixProject.flake {};
       in flake // {
-        legacyPackages = pkgs;
+        # `dom-gen-inputs` (JSON inputs for dom-gen: webref IDL/events/elements
+        # + MDN BCD) lives here rather than in `packages` so building it does
+        # not force evaluation of the haskell.nix project:
+        #   nix build .#dom-gen-inputs -o dom-gen/inputs
+        legacyPackages = pkgs // {
+          dom-gen-inputs = pkgs.callPackage ./dom-gen/inputs.nix { };
+        };
       });
 
   # --- Flake Local Nix Configuration ----------------------------

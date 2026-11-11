@@ -1,0 +1,10 @@
+-- reflex-dom-core with the GHC JavaScript backend (see cabal.project.js):
+--   nix develop '.?submodules=1#javascript-unknown-ghcjs'
+--   cabal build --project-file=cabal.project.reflex-dom-js reflex-dom-core
+import: cabal.project
+import: cabal.project.js.local
+packages: reflex-dom/reflex-dom-core
+-- reflex / reflex-dom-core upper bounds predate GHC 9.14
+allow-newer: reflex:*, reflex-dom-core:*, patch:*, *:base, *:template-haskell, *:ghc-prim, dependent-map:containers
+-- reflex 0.9.4.1 predates semialign 1.4 (Unzip became a superclass of Semialign)
+constraints: semialign < 1.4

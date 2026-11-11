@@ -1,0 +1,3 @@
+-- dom-gen is a native build-time tool; keep it out of the main
+-- (cross-compiled) ghcjs-integration project.
+packages: .
